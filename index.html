@@ -17,60 +17,78 @@
   </header>
 
   <main class="container">
-    <!-- Mensajes grandes y con aria-live para accesibilidad -->
-    <section class="card" aria-labelledby="tituloAcceso">
-      <h2 id="tituloAcceso">Acceso</h2>
+    <!-- Zona de mensajes (éxito / error). aria-live ayuda a lectores de pantalla -->
+    <div id="msg" class="msg" role="status" aria-live="polite"></div>
 
-      <!-- Zona de mensajes (éxito / error). aria-live ayuda a lectores de pantalla -->
-      <div id="msg" class="msg" role="status" aria-live="polite"></div>
-
+    <!-- PANTALLA INICIAL: elegir entre login o registro -->
+    <section id="welcomeSection" class="card" aria-labelledby="tituloAcceso">
+      <h2 id="tituloAcceso">Bienvenido a Cognia</h2>
+      <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">¿Qué deseas hacer?</p>
+      
       <div class="grid-2">
-        <!-- LOGIN -->
-        <div class="panel">
-          <h3>Iniciar sesión</h3>
+        <button id="goLoginBtn" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem;">
+          Iniciar sesión
+        </button>
+        <button id="goRegisterBtn" class="btn btn-secondary" style="font-size: 1.1rem; padding: 1rem;">
+          Crear cuenta
+        </button>
+      </div>
+    </section>
 
-          <form id="loginForm" class="form" autocomplete="on">
-            <label class="label" for="loginEmail">Email</label>
-            <input id="loginEmail" class="input" type="email" required placeholder="tu@email.com" />
+    <!-- FORMULARIO LOGIN -->
+    <section id="loginSection" class="card" aria-labelledby="tituloLogin" style="display: none;">
+      <h2 id="tituloLogin">Iniciar sesión</h2>
 
-            <label class="label" for="loginPass">Contraseña</label>
-            <input id="loginPass" class="input" type="password" required minlength="6" placeholder="Mínimo 6 caracteres" />
+      <div class="panel">
+        <form id="loginForm" class="form" autocomplete="on">
+          <label class="label" for="loginEmail">Email</label>
+          <input id="loginEmail" class="input" type="email" required placeholder="tu@email.com" />
 
+          <label class="label" for="loginPass">Contraseña</label>
+          <input id="loginPass" class="input" type="password" required minlength="6" placeholder="Mínimo 6 caracteres" />
+
+          <div class="row">
             <button class="btn btn-primary" type="submit">Entrar</button>
-          </form>
-        </div>
+            <button id="backFromLoginBtn" class="btn btn-secondary" type="button">Atrás</button>
+          </div>
+        </form>
+      </div>
+    </section>
 
-        <!-- REGISTRO -->
-        <div class="panel">
-          <h3>Crear cuenta</h3>
+    <!-- FORMULARIO REGISTRO -->
+    <section id="registerSection" class="card" aria-labelledby="tituloRegister" style="display: none;">
+      <h2 id="tituloRegister">Crear cuenta</h2>
 
-          <form id="registerForm" class="form" autocomplete="on">
-            <label class="label" for="regEmail">Email</label>
-            <input id="regEmail" class="input" type="email" required placeholder="tu@email.com" />
+      <div class="panel">
+        <form id="registerForm" class="form" autocomplete="on">
+          <label class="label" for="regEmail">Email</label>
+          <input id="regEmail" class="input" type="email" required placeholder="tu@email.com" />
 
-            <label class="label" for="regPass">Contraseña</label>
-            <input id="regPass" class="input" type="password" required minlength="6" placeholder="Mínimo 6 caracteres" />
+          <label class="label" for="regPass">Contraseña</label>
+          <input id="regPass" class="input" type="password" required minlength="6" placeholder="Mínimo 6 caracteres" />
 
-            <label class="label" for="regGender">Género</label>
-            <select id="regGender" class="input" required>
-              <option value="hombre">Hombre</option>
-              <option value="mujer">Mujer</option>
-              <option value="prefiereNoDecir">Prefiere no decirlo</option>
-            </select>
+          <label class="label" for="regGender">Género</label>
+          <select id="regGender" class="input" required>
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+            <option value="prefiereNoDecir">Prefiere no decirlo</option>
+          </select>
 
-            <label class="label" for="regBirth">Fecha de nacimiento</label>
-            <input id="regBirth" class="input" type="date" required />
+          <label class="label" for="regBirth">Fecha de nacimiento</label>
+          <input id="regBirth" class="input" type="date" required />
 
-            <label class="label" for="regLevel">Nivel inicial</label>
-            <select id="regLevel" class="input" required>
-              <option value="facil">Fácil</option>
-              <option value="medio">Medio</option>
-              <option value="dificil">Difícil</option>
-            </select>
+          <label class="label" for="regLevel">Nivel inicial</label>
+          <select id="regLevel" class="input" required>
+            <option value="facil">Fácil</option>
+            <option value="medio">Medio</option>
+            <option value="dificil">Difícil</option>
+          </select>
 
+          <div class="row">
             <button class="btn btn-primary" type="submit">Crear cuenta</button>
-          </form>
-        </div>
+            <button id="backFromRegisterBtn" class="btn btn-secondary" type="button">Atrás</button>
+          </div>
+        </form>
       </div>
 
       <div class="hint">

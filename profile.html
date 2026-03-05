@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cognia - Perfil</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <!-- Chart.js por CDN (sin instalación, perfecto para GitHub Pages) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <h1 class="brand">Cognia</h1>
+      <p class="brand__sub">Tu perfil y progreso</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" aria-labelledby="tituloPerfil">
+      <h2 id="tituloPerfil">Perfil</h2>
+
+      <!-- Mensaje para avisos (por ejemplo "Resultados guardados") -->
+      <div id="msg" class="msg" role="status" aria-live="polite"></div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Datos</h3>
+
+          <!-- Estos <p> se rellenan por JS -->
+          <p class="bigline"><strong>Email:</strong> <span id="userEmail">...</span></p>
+          <p class="bigline"><strong>Género:</strong> <span id="userGender">...</span></p>
+          <p class="bigline"><strong>Edad:</strong> <span id="userAge">...</span></p>
+
+          <hr class="hr" />
+
+          <label class="label" for="levelSelect">Nivel de las pruebas</label>
+          <select id="levelSelect" class="input">
+            <option value="facil">Fácil</option>
+            <option value="medio">Medio</option>
+            <option value="dificil">Difícil</option>
+          </select>
+
+          <div class="row">
+            <button id="saveLevelBtn" class="btn btn-secondary">Guardar nivel</button>
+            <button id="goTestBtn" class="btn btn-primary">Hacer prueba</button>
+          </div>
+
+          <div class="row">
+            <button id="logoutBtn" class="btn btn-danger">Salir</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Progreso</h3>
+
+          <!-- Tabs grandes y claros -->
+          <div class="tabs" role="tablist" aria-label="Pestañas de progreso">
+            <button class="tab tab--active" data-topic="math" role="tab" aria-selected="true">Matemáticas</button>
+            <button class="tab" data-topic="lex" role="tab" aria-selected="false">Léxico</button>
+            <button class="tab" data-topic="mem" role="tab" aria-selected="false">Memoria</button>
+          </div>
+
+          <!-- Un solo canvas reutilizado -->
+          <div class="chartWrap">
+            <canvas id="progressChart" aria-label="Gráfico de progreso" role="img"></canvas>
+          </div>
+
+          <p class="small">
+            Aquí verás tus puntuaciones (0 a 100) a lo largo de los días.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Recuerda: solo 1 prueba al día (demo).</p>
+    </footer>
+  </main>
+
+  <script type="module" src="./js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+/* =========================================
+   COGNIA - ESTILOS
+   - Alto contraste
+   - Tipografía grande
+   - Botones grandes
+   - Layout simple y responsive
+   ========================================= */
+
+/* Variables para mantener consistencia visual */
+:root {
+  --bg: #0b0f14;          /* fondo oscuro */
+  --card: #111826;        /* tarjetas */
+  --text: #f3f4f6;        /* texto claro */
+  --muted: #cbd5e1;       /* texto secundario */
+  --border: #243244;      /* borde suave */
+  --focus: #fbbf24;       /* color para focus visible */
+  --primary: #22c55e;     /* verde accesible */
+  --primaryText: #06210f;
+  --secondary: #38bdf8;   /* azul */
+  --danger: #ef4444;      /* rojo */
+  --warnBg: #2a1c00;
+  --warnBorder: #9a6a00;
+}
+
+/* Reset básico para no depender de estilos del navegador */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.4;
+  font-size: 18px; /* mínimo 18px para accesibilidad */
+}
+
+/* Contenedor centrado */
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 16px 0 28px;
+}
+
+/* Barra superior */
+.topbar {
+  border-bottom: 2px solid var(--border);
+  background: #070a0f;
+}
+.topbar__inner {
+  padding: 16px 0;
+}
+.brand {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: 0.5px;
+}
+.brand__sub {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+/* Tarjetas */
+.card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Separadores */
+.hr {
+  border: none;
+  border-top: 2px solid var(--border);
+  margin: 16px 0;
+}
+
+/* Paneles interiores */
+.panel {
+  background: rgba(255,255,255,0.03);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+/* Grid para 2 columnas (baja a 1 en móvil) */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Formularios */
+.form {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.label {
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+.input {
+  font-size: 18px;          /* grande para leer */
+  padding: 14px 12px;       /* grande para tocar */
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: #0a1220;
+  color: var(--text);
+}
+
+/* Focus MUY visible (para teclado) */
+.input:focus, button:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Botones grandes */
+.btn {
+  font-size: 18px;
+  padding: 14px 14px;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  min-height: 52px; /* alto para dedo */
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--primaryText);
+  font-weight: 800;
+}
+
+.btn-secondary {
+  background: var(--secondary);
+  color: #02131c;
+  font-weight: 800;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #1b0505;
+  font-weight: 800;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Filas de botones */
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.row--end { justify-content: flex-end; }
+
+/* Mensajes */
+.msg {
+  margin: 10px 0 16px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  min-height: 0;
+}
+.msg.ok {
+  border-color: rgba(34,197,94,0.7);
+}
+.msg.err {
+  border-color: rgba(239,68,68,0.7);
+}
+.msg.warn {
+  background: var(--warnBg);
+  border-color: var(--warnBorder);
+}
+
+/* Texto auxiliar */
+.small { color: var(--muted); font-size: 16px; }
+.hint { margin-top: 12px; color: var(--muted); }
+.bigline { font-size: 20px; }
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0 12px;
+}
+.tab {
+  flex: 1;
+  min-width: 140px;
+  background: #0a1220;
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.tab--active {
+  border-color: var(--focus);
+}
+
+/* Gráfico */
+.chartWrap {
+  background: #0a1220;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+}
+
+/* Test */
+.progressLine {
+  font-size: 18px;
+  color: var(--muted);
+  margin: 10px 0 10px;
+}
+.blockTitle {
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+/* Área de pregunta (muy limpia) */
+.questionArea {
+  background: rgba(255,255,255,0.03);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  min-height: 120px;
+}
+
+/* Feedback grande */
+.feedback {
+  margin-top: 12px;
+  font-size: 22px;
+  font-weight: 900;
+  min-height: 34px; /* para que no “salte” la interfaz */
+}
+
+/* Opciones tipo botón (léxico + memoria) */
+.options {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+.optionBtn {
+  width: 100%;
+  text-align: left;
+}
+
+/* Footer */
+.footer {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .brand { font-size: 28px; }
+}
