@@ -1,5 +1,4 @@
 // =========================================
-// test.js (compatible con tu test.html actual)
 // - 3 bloques: Matemáticas (10), Léxico (10), Memoria (2 fases)
 // - Botón "Siguiente" controla el avance de preguntas
 // - Matemáticas: Enter corrige/avanza
@@ -24,9 +23,7 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-// -------------------------
-// DOM (de TU test.html)
-// -------------------------
+
 const msg = document.getElementById("msg");
 const blockNum = document.getElementById("blockNum");
 const questionNum = document.getElementById("questionNum");
@@ -37,9 +34,8 @@ const feedback = document.getElementById("feedback");
 const nextBtn = document.getElementById("nextBtn");
 const backProfileBtn = document.getElementById("backProfileBtn");
 
-// -------------------------
 // Helpers UI
-// -------------------------
+
 function showMessage(text, type = "") {
   if (!msg) return;
   msg.textContent = text;
@@ -56,9 +52,9 @@ function clearFeedback() {
   setFeedback("", "");
 }
 
-// -------------------------
+
 // Helpers fecha
-// -------------------------
+
 function pad2(n) {
   return String(n).padStart(2, "0");
 }
@@ -67,7 +63,7 @@ function todayISO() {
   return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
 }
 
-// ✅ Devuelve true si ya hay 1 resultado guardado hoy para este usuario
+// Devuelve true si ya hay un resultado guardado hoy para este usuario
 async function alreadyDidTestToday(uid) {
   const today = todayISO();
 
@@ -92,9 +88,8 @@ function shuffleArray(arr) {
   return a;
 }
 
-// -------------------------
+
 // Firebase helpers
-// -------------------------
 async function loadUserLevel(uid) {
   const ref = doc(db, "users", uid);
   const snap = await getDoc(ref);
@@ -128,9 +123,8 @@ async function saveResults({ uid, math, lex, mem, level, testId }) {
   });
 }
 
-// -------------------------
 // Estado del test
-// -------------------------
+
 let currentUser = null;
 let currentLevel = "facil";
 let currentTest = null;
@@ -154,18 +148,18 @@ let memSelected = new Set();
 let memCorrected = false; // para habilitar Siguiente tras corregir
 let memTimerInterval = null;
 
-// -------------------------
+
 // Render: progreso
-// -------------------------
+
 function renderProgress(totalQuestions) {
   blockNum.textContent = String(currentBlock + 1);
   questionTotal.textContent = String(totalQuestions);
   questionNum.textContent = String(currentIndex + 1);
 }
 
-// -------------------------
+
 // Render: Matemáticas
-// -------------------------
+
 function renderMathQuestion() {
   answered = false;
   clearFeedback();
@@ -204,7 +198,7 @@ function renderMathQuestion() {
     if (e.key === "Enter") {
       e.preventDefault();
       if (nextBtn.disabled) return;
-      handleNext(); // usa tu handler único del botón "Siguiente"
+      handleNext(); // usa handler único del botón "Siguiente"
     }
   });
 }
@@ -235,9 +229,9 @@ function checkMathAndScore() {
   answered = true;
 }
 
-// -------------------------
+
 // Render: Léxico
-// -------------------------
+
 function renderLexQuestion() {
   answered = false;
   lexPickedIndex = null;
@@ -265,7 +259,7 @@ function renderLexQuestion() {
       wrap.querySelectorAll(".opt-btn").forEach(b => b.classList.remove("is-selected"));
       btn.classList.add("is-selected");
 
-      // ✅ guardo como número real
+      // guardo como número real
       lexPickedIndex = Number(btn.dataset.i);
 
       nextBtn.disabled = false;
@@ -299,9 +293,9 @@ function checkLexAndScore() {
   nextBtn.disabled = false; // ahora sirve para avanzar
 }
 
-// -------------------------
+
 // Render: Memoria (fase 1)
-// -------------------------
+
 function renderMemShow() {
   answered = false;
   clearFeedback();
@@ -344,9 +338,9 @@ function renderMemShow() {
   }, 1000);
 }
 
-// -------------------------
+
 // Render: Memoria (fase 2)
-// -------------------------
+
 function renderMemPick() {
   answered = false;
   clearFeedback();
@@ -355,11 +349,11 @@ function renderMemPick() {
   memCorrected = false;
   memSelected.clear();
 
-  // Ahora sí: fase 2/2
+  // fase 2/2
   questionTotal.textContent = "2";
   questionNum.textContent = "2";
 
-  // Importante: Siguiente bloqueado hasta corregir
+  // Siguiente bloqueado hasta corregir
   nextBtn.disabled = true;
 
   const options = shuffleArray(currentTest.mem.options);
@@ -430,7 +424,7 @@ function renderMemPick() {
   checkBtn.addEventListener("click", () => {
     if (memCorrected) return;
 
-    // ✅ puntúa SOLO al corregir
+    // puntúa SOLO al corregir
     let hits = 0;
     memSelected.forEach((w) => {
       if (correctSet.has(w)) hits++;
@@ -441,16 +435,16 @@ function renderMemPick() {
     memCorrected = true;
     setFeedback(`✅ Memoria: ${hits}/10 · ${scoreMem}/100`, "ok");
 
-    // ahora sí dejamos “Siguiente”
+    // Ya se deja “Siguiente”
     nextBtn.disabled = false;
   });
 
   updateCount();
 }
 
-// -------------------------
+
 // Pantalla final + guardar
-// -------------------------
+
 async function finishAndSave() {
   blockTitle.textContent = "¡Test completado!";
   clearFeedback();
@@ -479,7 +473,7 @@ async function finishAndSave() {
     </div>
   `;
 
-  // oculto/inhabilito el botón siguiente de abajo
+  // se oculta el botón siguiente de abajo
   nextBtn.disabled = true;
 
   document.getElementById("backNoSaveBtn").addEventListener("click", () => {
@@ -508,9 +502,9 @@ async function finishAndSave() {
   });
 }
 
-// -------------------------
+
 // Navegación: render bloque actual
-// -------------------------
+
 function renderCurrent() {
   // reset botón siguiente a “bloqueado” si hace falta, cada render lo gestiona
   nextBtn.disabled = true;
@@ -520,20 +514,20 @@ function renderCurrent() {
   else renderMemShow(); // memoria arranca en fase 1
 }
 
-// -------------------------
-// Botón Siguiente: handler ÚNICO para todo
-// -------------------------
+
+// Botón Siguiente: handler único para todo
+
 function handleNext() {
   // Bloque 0: Matemáticas
 if (currentBlock === 0) {
-  // 1) Si aún NO está corregida esta pregunta -> corrijo y me quedo aquí
+  // 1) Si aún no está corregida esta pregunta -> corrijo y me quedo aquí
   if (!answered) {
     checkMathAndScore(); // mostrará el feedback
     // Importante: no avanzo todavía
     return;
   }
 
-  // 2) Si YA estaba corregida -> ahora sí avanzo a la siguiente
+  // 2) Si ya estaba corregida -> ahora sí avanzo a la siguiente
   currentIndex++;
 
   if (currentIndex >= 10) {
@@ -550,7 +544,7 @@ if (currentBlock === 0) {
  // Bloque 1: Léxico
 if (currentBlock === 1) {
 
-  // Si aún NO está corregida esta pregunta -> corrijo y me quedo aquí
+  // Si aún no está corregida esta pregunta -> corrijo y me quedo aquí
   if (!answered) {
     checkLexAndScore();
     return;
@@ -576,23 +570,23 @@ if (currentBlock === 1) {
     // Si estamos en fase 2, solo dejamos avanzar si ya corrigió
     if (!memCorrected) return;
 
-    // Memoria termina aquí
+
     finishAndSave();
   }
 }
 
-// -------------------------
+
 // Eventos
-// -------------------------
+
 nextBtn.addEventListener("click", handleNext);
 
 backProfileBtn.addEventListener("click", () => {
   window.location.href = "./profile.html";
 });
 
-// -------------------------
+
 // Inicio
-// -------------------------
+
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
     window.location.href = "./index.html";
@@ -601,7 +595,7 @@ onAuthStateChanged(auth, async (user) => {
 
   currentUser = user;
 
-  // ✅ Solo 1 test al día
+  // Solo 1 test al día
   const doneToday = await alreadyDidTestToday(user.uid);
 
   if (doneToday) {
@@ -640,4 +634,5 @@ onAuthStateChanged(auth, async (user) => {
     console.error(e);
     showMessage("❌ Error preparando la prueba. Mira consola (F12).", "err");
   }
+
 });
