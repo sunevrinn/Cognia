@@ -1,0 +1,734 @@
+/* =========================================
+   COGNIA - ESTILOS
+   - Alto contraste
+   - Tipografía grande
+   - Botones grandes
+   - Layout simple y responsive
+   ========================================= */
+
+/* Variables para mantener consistencia visual */
+:root {
+  --bg: #0d1117;          /* fondo oscuro profesional */
+  --card: #161b22;        /* tarjetas */
+  --text: #e6edf3;        /* texto claro */
+  --muted: #8b949e;       /* texto secundario */
+  --border: #30363d;      /* borde suave */
+  --focus: #00d9ff;       /* cyan brillante para focus */
+  --primary: #0ea5e9;     /* azul cielo sofisticado */
+  --primaryText: #ffffff;
+  --secondary: #8b5cf6;   /* violeta elegante */
+  --secondaryText: #ffffff;
+  --danger: #f85149;      /* rojo sofisticado */
+  --warnBg: #2a1c00;
+  --warnBorder: #9a6a00;
+}
+
+/* Reset básico para no depender de estilos del navegador */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Contenedor centrado */
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 16px 0 28px;
+}
+
+/* Barra superior */
+.topbar {
+  border-bottom: 2px solid var(--border);
+  background: #0a0a14;
+  padding: 24px 0 16px;
+}
+.topbar__inner {
+  padding: 0;
+}
+.brand {
+  margin: 0;
+  font-size: 42px;
+  letter-spacing: -0.8px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #0ea5e9 0%, #00d9ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.brand__sub {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Tarjetas */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+
+/* Separadores */
+.hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+}
+
+/* Paneles interiores */
+.panel {
+  background: rgba(22, 27, 34, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Grid para 2 columnas (baja a 1 en móvil) */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Columna de botones (vertical) */
+.button-column {
+  display: grid;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+/* Tarjeta de bienvenida */
+.welcome-card {
+  max-width: 520px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 48px !important;
+}
+
+.welcome-text {
+  font-size: 18px;
+  color: var(--muted);
+  margin: 16px 0 32px;
+}
+
+/* Botón grande (para primera pantalla) */
+.btn-large {
+  width: 100%;
+  font-size: 16px;
+  padding: 14px 24px;
+  min-height: 48px;
+}
+
+/* Formularios */
+.form {
+  display: grid;
+  gap: 0;
+  margin-top: 20px;
+}
+
+/* Grupo de forma */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group:last-of-type {
+  margin-bottom: 24px;
+}
+
+/* Tarjeta de formulario */
+.form-card {
+  max-width: 460px;
+  margin: 40px auto;
+  padding: 40px !important;
+}
+
+.form-card h2 {
+  text-align: center;
+  color: var(--text);
+}
+
+/* Grupo de botones (vertical) */
+.button-group {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.input {
+  font-size: 16px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(22, 27, 34, 0.6);
+  color: var(--text);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.input::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+.input:hover {
+  border-color: #404554;
+  background: rgba(22, 27, 34, 0.8);
+}
+
+/* Focus MUY visible (para teclado) */
+.input:focus, .input:focus-visible {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+  background: rgba(22, 27, 34, 0.9);
+}
+
+/* Botones grandes */
+.btn {
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  min-height: 48px;
+  font-weight: 600;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:focus, .btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--primaryText);
+  font-weight: 600;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #0284c7;
+  border-color: rgba(14, 165, 233, 0.5);
+}
+
+.btn-secondary {
+  background: var(--secondary);
+  color: var(--secondaryText);
+  font-weight: 600;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #7c3aed;
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #ffffff;
+  font-weight: 600;
+  border: 1px solid rgba(248, 81, 73, 0.3);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #da3633;
+  border-color: rgba(248, 81, 73, 0.5);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Filas de botones */
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.row--end { justify-content: flex-end; }
+
+/* Mensajes */
+.msg {
+  margin: 10px 0 16px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  min-height: 0;
+  display: none;
+}
+.msg:not(:empty) {
+  display: block;
+}
+.msg.ok {
+  display: block;
+  border-color: rgba(34,197,94,0.7);
+}
+.msg.err {
+  display: block;
+  border-color: rgba(239,68,68,0.7);
+}
+.msg.warn {
+  display: block;
+  background: var(--warnBg);
+  border-color: var(--warnBorder);
+}
+
+/* Texto auxiliar */
+.small { 
+  color: var(--muted); 
+  font-size: 14px; 
+}
+.hint { 
+  margin-top: 12px; 
+  color: var(--muted); 
+  font-size: 14px;
+}
+.bigline { 
+  font-size: 18px; 
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 16px 0 16px;
+}
+.tab {
+  flex: 1;
+  min-width: 120px;
+  background: rgba(22, 27, 34, 0.6);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.tab:hover {
+  border-color: #404554;
+  background: rgba(22, 27, 34, 0.8);
+}
+.tab--active {
+  border-color: var(--primary);
+  background: rgba(14, 165, 233, 0.1);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Gráfico */
+.chartWrap {
+  background: rgba(22, 27, 34, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* Test */
+.progressLine {
+  font-size: 18px;
+  color: var(--muted);
+  margin: 10px 0 10px;
+}
+.blockTitle {
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+/* Área de pregunta (muy limpia) */
+.questionArea {
+  background: rgba(255,255,255,0.03);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  min-height: 120px;
+}
+
+/* Feedback grande */
+.feedback {
+  margin-top: 12px;
+  font-size: 22px;
+  font-weight: 900;
+  min-height: 34px; /* para que no “salte” la interfaz */
+}
+
+/* Opciones tipo botón (léxico + memoria) */
+.options {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+.optionBtn {
+  width: 100%;
+  text-align: left;
+}
+
+/* Footer */
+.footer {
+  margin-top: 32px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .brand { font-size: 32px; }
+  .card { padding: 24px; }
+}
+
+/* =========================
+   PERFIL - GRÁFICA RESPONSIVE
+   ========================= */
+
+/* Contenedor del bloque de progreso */
+.chart-card {
+  padding: 16px;
+}
+
+/* Caja de la gráfica: altura adaptable a pantalla */
+.chart-wrap {
+  width: 100%;
+  height: clamp(260px, 42vh, 420px); /* móvil->tablet->pc */
+  border-radius: 16px;
+  padding: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+/* El canvas siempre ocupa el tamaño del wrap */
+.chart-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Tabs: que en móvil se pongan en columna si no caben */
+.tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  flex: 1 1 120px; /* mínimo 120px, luego se reparten */
+}
+
+/* En móvil: botones más grandes y una sola columna si hace falta */
+@media (max-width: 480px) {
+  .chart-card {
+    padding: 12px;
+  }
+  .chart-wrap {
+    height: 300px;
+    padding: 8px;
+  }
+  .tab {
+    flex: 1 1 100%;
+  }
+}
+/* =========================
+   MEMORIA - SELECCIÓN CLARA
+   ========================= */
+
+.words-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px; /* más compacto */
+  margin-top: 12px;
+}
+
+.word-btn{
+  width:100%;
+  padding: 14px 12px;
+  border-radius: 14px;
+  border: 2px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color: #f3f4f6;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .05s ease, background .12s ease, border-color .12s ease;
+}
+
+.word-btn:hover{
+  transform: translateY(-1px);
+}
+
+.word-btn:active{
+  transform: translateY(0);
+}
+
+/* 👇 estado seleccionado: súper evidente */
+.word-btn.is-selected{
+  background: rgba(34,197,94,0.20);         /* verde suave */
+  border-color: rgba(34,197,94,0.75);
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.20);
+}
+
+/* Texto de ayuda */
+.mem-hint{
+  margin-top: 10px;
+  font-size: 16px;
+  color: #e5e7eb;
+  opacity: .95;
+}
+
+/* Botonera más compacta en PC */
+.actions-compact{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+/* =========================================
+   TEST - MEJORAS UX (PC + MÓVIL)
+   ========================================= */
+
+/* Preguntas (cards) más compactas */
+.qgrid{
+  display: grid;
+  gap: 12px;
+}
+
+.qcard{
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.qtitle{
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* Léxico: botones de opciones más juntos */
+.options-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px; /* ✅ más juntos */
+}
+
+/* Botón opción (lex) y estado seleccionado */
+.opt-btn{
+  font-size: 18px;
+  font-weight: 700;
+  padding: 14px 12px;
+  border-radius: 14px;
+}
+.opt-btn.is-selected{
+  background: rgba(59,130,246,0.25);
+  border-color: rgba(59,130,246,0.85);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.18);
+}
+
+/* Botonera compacta (evita que en PC se separen demasiado) */
+.actions-compact{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items:center;
+  justify-content: flex-start;
+}
+
+/* =========================================
+   MEMORIA - SELECCIÓN CLARA + DESORDENADA
+   ========================================= */
+
+.timer-big{
+  font-size: 22px;
+  font-weight: 800;
+  margin: 10px 0 12px;
+}
+
+.words-show{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.word-chip{
+  display:inline-block;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  font-weight: 800;
+  font-size: 18px;
+}
+
+/* Grid de 20 palabras */
+.words-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px; /* ✅ compacto */
+  margin-top: 12px;
+}
+
+/* Botón de palabra */
+.word-btn{
+  width:100%;
+  padding: 14px 12px;
+  border-radius: 14px;
+  border: 2px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color: #f3f4f6;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .05s ease, background .12s ease, border-color .12s ease;
+}
+
+.word-btn:hover{ transform: translateY(-1px); }
+.word-btn:active{ transform: translateY(0); }
+
+/* ✅ Estado seleccionado súper evidente */
+.word-btn.is-selected{
+  background: rgba(34,197,94,0.20);
+  border-color: rgba(34,197,94,0.75);
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.20);
+}
+
+.mem-hint{
+  margin-top: 10px;
+  font-size: 16px;
+  color: #e5e7eb;
+  opacity: .95;
+}
+
+/* Móvil: botones aún más cómodos */
+@media (max-width: 480px){
+  .options-grid{ grid-template-columns: 1fr; }
+  .words-grid{ grid-template-columns: 1fr 1fr; }
+  .word-btn, .opt-btn{ font-size: 18px; }
+}
+/* tu CSS anterior */
+
+.footer{
+  margin-top:40px;
+  text-align:center;
+}
+
+/* ---- AQUÍ PEGAS LO NUEVO ---- */
+
+/* =========================================
+   TEST UX
+   ========================================= */
+
+.options-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:10px;
+  margin-top:10px;
+}
+
+.opt-btn.is-selected{
+  background:rgba(59,130,246,0.3);
+  border-color:rgba(59,130,246,0.9);
+}
+
+/* memoria */
+
+.words-show{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.word-chip{
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.08);
+  font-weight:700;
+}
+
+.words-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:10px;
+  margin-top:10px;
+}
+
+.word-btn{
+  padding:14px;
+  border-radius:14px;
+  border:2px solid rgba(255,255,255,0.2);
+  background:rgba(255,255,255,0.05);
+  font-weight:700;
+  cursor:pointer;
+}
+
+.word-btn.is-selected{
+  background:rgba(34,197,94,0.3);
+  border-color:rgba(34,197,94,0.9);
+}
+
+.timer-big{
+  font-size:28px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+
+.mem-hint{
+  font-size:18px;
+  margin-bottom:10px;
+}
+/* =========================================
+   TEST - BOTÓN SIGUIENTE MÁS CÓMODO EN PC
+   ========================================= */
+
+/* Si tu .row--end lo manda al final, lo cambiamos en la pantalla del test */
+.row.row--end{
+  justify-content: flex-start; /* en vez de a la derecha */
+}
+
+/* opcional: un poquito de margen arriba */
+#nextBtn{
+  margin-top: 8px;
+}

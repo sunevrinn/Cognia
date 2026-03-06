@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cognia · Perfil</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/styles.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+
+<body>
+
+  <!-- =============================
+       CABECERA
+  ============================== -->
+  <header class="topbar">
+
+    <div class="container topbar__inner">
+
+      <h1 class="brand">Cognia</h1>
+      <p class="brand__sub">Perfil de usuario</p>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =============================
+       CONTENIDO
+  ============================== -->
+  <main class="container">
+
+    <!-- mensajes -->
+    <div id="msg" class="msg"></div>
+
+
+    <!-- =============================
+         DATOS DEL USUARIO
+    ============================== -->
+    <section class="card">
+
+      <h2>Tu perfil</h2>
+
+      <div class="profile-grid">
+
+        <div class="profile-item">
+          <span>Email</span>
+          <strong id="userEmail">-</strong>
+        </div>
+
+        <div class="profile-item">
+          <span>Nombre</span>
+          <strong id="userName">-</strong>
+        </div>
+
+        <div class="profile-item">
+          <span>Sexo</span>
+          <strong id="userGender">-</strong>
+        </div>
+
+        <div class="profile-item">
+          <span>Edad</span>
+          <strong id="userAge">-</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =============================
+         NIVEL
+    ============================== -->
+    <section class="card">
+
+      <h2>Dificultad de los ejercicios</h2>
+
+      <div class="panel">
+
+        <label class="form-label" for="levelSelect">
+          Nivel actual
+        </label>
+
+        <select id="levelSelect" class="input">
+          <option value="facil">Fácil</option>
+          <option value="medio">Medio</option>
+          <option value="dificil">Difícil</option>
+        </select>
+
+        <div class="row">
+          <button id="saveLevelBtn" class="btn btn-primary">
+            Guardar nivel
+          </button>
+
+          <button id="goTestBtn" class="btn btn-secondary">
+            Hacer prueba
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =============================
+         PROGRESO
+    ============================== -->
+    <section class="card chart-card">
+
+      <h2>Progreso</h2>
+
+      <!-- Tabs -->
+      <div class="tabs">
+
+        <button
+          class="tab tab--active"
+          data-topic="math"
+          aria-selected="true"
+        >
+          Matemáticas
+        </button>
+
+        <button
+          class="tab"
+          data-topic="lex"
+          aria-selected="false"
+        >
+          Léxico
+        </button>
+
+        <button
+          class="tab"
+          data-topic="mem"
+          aria-selected="false"
+        >
+          Memoria
+        </button>
+
+      </div>
+
+
+      <!-- Contenedor responsive del gráfico -->
+      <div class="chart-wrap">
+
+        <canvas id="progressChart"></canvas>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =============================
+         ACCIONES
+    ============================== -->
+    <section class="card">
+
+      <div class="row">
+
+        <button id="logoutBtn" class="btn btn-danger">
+          Cerrar sesión
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =============================
+         FOOTER
+    ============================== -->
+    <footer class="footer">
+      <p>Cognia · Demo estimulación cognitiva</p>
+    </footer>
+
+
+  </main>
+
+
+
+  <!-- =============================
+       JS
+  ============================== -->
+  <script type="module" src="./js/profile.js"></script>
+
+
+</body>
+</html>
